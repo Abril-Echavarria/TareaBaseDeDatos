@@ -147,5 +147,14 @@ Calcular la suma de los saldos de los usuarios de la compañía telefónica TELC
 
 
 
-
-
+¿Qué provincias no tenemos clientes?
+    SELECT p.codigo,p.nombre FROM provincias AS p
+    LEFT JOIN clientes AS c
+    ON c.codigoProvincia=p.codigo
+    WHERE c.codigoprovincia IS null;
+  
+  ¿Qué provincias tienen clientes? Pero sin repetir el nombre de la provincia. Un tip, vas a necesitar la sentencia distinct
+    SELECT DISTINCT p.codigo,p.nombre FROM provincias AS p
+    LEFT JOIN clientes AS c
+    ON c.codigoProvincia=p.codigo
+    WHERE c.codigoprovincia IS NOT null;
